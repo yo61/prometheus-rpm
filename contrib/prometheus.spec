@@ -5,7 +5,7 @@ Summary:	Prometheus is a systems and service monitoring system. It collects metr
 Group:		System Environment/Daemons
 License:	See the LICENSE file at github.
 URL:		https://github.com/prometheus/prometheus
-Source0:	https://github.com/prometheus/prometheus/archive/$(VERSION).tar.gz
+Source0:	https://github.com/prometheus/prometheus/archive/%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:  git
 BuildRequires:  mercurial
@@ -19,9 +19,9 @@ AutoReqProv:	No
 
 %description
 
-Prometheus is a systems and service monitoring system. 
-It collects metrics from configured targets at given intervals, evaluates 
-rule expressions, displays the results, and can trigger alerts if 
+Prometheus is a systems and service monitoring system.
+It collects metrics from configured targets at given intervals, evaluates
+rule expressions, displays the results, and can trigger alerts if
 some condition is observed to be true.
 
 %prep
@@ -64,8 +64,8 @@ chmod 744 /var/log/prometheus
 %defattr(-,root,root,-)
 /usr/bin/prometheus
 %config(noreplace) /etc/prometheus/prometheus.conf
+%config(noreplace) /etc/prometheus/prometheus.rules
 /etc/init.d/prometheus
 %config(noreplace) /etc/sysconfig/prometheus
 #/var/run/prometheus
 #/var/log/prometheus
-
