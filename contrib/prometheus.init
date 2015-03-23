@@ -31,10 +31,10 @@ start() {
   fi
 
   echo -n $"Starting prometheus: "
-  daemonize -u ${DAEMON_USER} -p ${PID_FILE} -l ${LOCK_FILE} -a -e ${LOG_FILE} -o ${LOG_FILE} ${DAEMON} ${ARGS} -H ${FQDN} -f ${DAEMON_CONFIG}
+  daemonize -u ${DAEMON_USER} -p ${PID_FILE} -l ${LOCK_FILE} -a -e ${LOG_FILE} -o ${LOG_FILE} ${DAEMON} ${ARGS}
   RETVAL=$?
   echo ""
-  return ${RETVAL}
+  return $RETVAL
 }
 
 stop() {
