@@ -11,7 +11,7 @@ rpm:
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/prometheus"
 	cd "$(PWD)/rpmbuild/SOURCES" && mv prometheus prometheus-$(VERSION)
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz $(VERSION).tar.gz prometheus-$(VERSION)
-	rpmbuild --define '_topdir' "$(PWD)/rpmbuild" -ba --clean contrib/prometheus.spec
+	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/prometheus.spec
 
 clean:
 	rm -rf "$(PWD)/rpmbuild/SOURCES/prometheus-$(VERSION)"
