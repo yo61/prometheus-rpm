@@ -28,7 +28,7 @@ some condition is observed to be true.
 %setup -q
 
 %build
-make %{?_smp_mflags}
+make binary %{?_smp_mflags}
 
 %install
 mkdir -vp $RPM_BUILD_ROOT/var/log/prometheus/
