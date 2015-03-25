@@ -6,7 +6,7 @@ all: rpm clean
 rpm:
 	mkdir -p "$(PWD)/rpmbuild"
 	mkdir -p "$(PWD)/rpmbuild/SOURCES/"
-	cd ~/rpmbuild/SOURCES && git clone https://github.com/prometheus/node_exporter.git
+	cd "$(PWD)/rpmbuild/SOURCES" && git clone https://github.com/prometheus/node_exporter.git
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/node_exporter"
 	cd "$(PWD)/rpmbuild/SOURCES" && mv node_exporter prometheus-node-exporter-$(VERSION)
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz prometheus-node-exporter-$(VERSION).tar.gz prometheus-node-exporter-$(VERSION)
