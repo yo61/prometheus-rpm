@@ -21,6 +21,7 @@ LOCK_FILE=/var/lock/subsys/${PROG}
 LOG_FILE=/var/log/prometheus/node_exporter.log
 DAEMON_USER="prometheus"
 FQDN=$(hostname --long)
+GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
 
 . ${DAEMON_SYSCONFIG}
 
