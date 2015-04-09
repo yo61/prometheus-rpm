@@ -89,6 +89,22 @@ chmod 744 /var/log/prometheus
 %config(noreplace) /etc/prometheus/prometheus.rules
 /etc/init.d/prometheus
 %config(noreplace) /etc/sysconfig/prometheus
-%dir /usr/share/prometheus
-#/var/run/prometheus
-#/var/log/prometheus
+/usr/share/prometheus/consoles/aws_elasticache.html
+/usr/share/prometheus/consoles/aws_elb.html
+/usr/share/prometheus/consoles/aws_redshift-cluster.html
+/usr/share/prometheus/consoles/aws_redshift.html
+/usr/share/prometheus/consoles/cassandra.html
+/usr/share/prometheus/consoles/cloudwatch.html
+/usr/share/prometheus/consoles/federation_template_example.txt
+/usr/share/prometheus/consoles/haproxy-backend.html
+/usr/share/prometheus/consoles/haproxy-backends.html
+/usr/share/prometheus/consoles/haproxy-frontend.html
+/usr/share/prometheus/consoles/haproxy-frontends.html
+/usr/share/prometheus/consoles/haproxy.html
+/usr/share/prometheus/consoles/index.html.example
+/usr/share/prometheus/consoles/node-cpu.html
+/usr/share/prometheus/consoles/node-disk.html
+/usr/share/prometheus/consoles/node-overview.html
+/usr/share/prometheus/consoles/node.html
+/usr/share/prometheus/console_libraries/prom.lib
+/usr/share/prometheus/console_libraries/menu.lib
