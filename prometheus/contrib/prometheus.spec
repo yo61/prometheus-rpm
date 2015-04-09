@@ -63,8 +63,8 @@ install -m 755 consoles/node-cpu.html $RPM_BUILD_ROOT/usr/share/prometheus/conso
 install -m 755 consoles/node-disk.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/node-overview.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/node.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
-install -m 755 console_libaries/prom.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
-install -m 755 console_libaries/menu.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
+install -m 755 console_libraries/prom.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
+install -m 755 console_libraries/menu.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
 
 %clean
 make clean
