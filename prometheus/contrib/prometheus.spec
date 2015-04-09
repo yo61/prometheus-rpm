@@ -89,6 +89,6 @@ chmod 744 /var/log/prometheus
 %config(noreplace) /etc/prometheus/prometheus.rules
 /etc/init.d/prometheus
 %config(noreplace) /etc/sysconfig/prometheus
-/usr/share/prometheus
+%dir /usr/share/prometheus
 #/var/run/prometheus
 #/var/log/prometheus
