@@ -37,4 +37,4 @@
 #  -web.use-local-assets=false: Read assets/templates from file instead of binary.
 #  -web.user-assets="": Path to static asset directory, available at /user.
 
-ARGS="-config.file=/etc/prometheus/prometheus.conf -log_dir=/var/log/prometheus"
+ARGS="-config.file=/etc/prometheus/prometheus.conf -log_dir=/var/log/prometheus -web.console.libraries=/usr/share/prometheus/console_libraries -web.console.templates=/usr/share/prometheus/consoles"
