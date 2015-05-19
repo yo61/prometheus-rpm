@@ -1,5 +1,5 @@
 Name:		prometheus
-Version:	0.13.1
+Version:	0.13.3
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
