@@ -1,5 +1,5 @@
 Name:		prometheus-node-exporter
-Version:	0.80
+Version:	0.10.0
 Release:	1%{?dist}
 Summary:	Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
 Group:		System Environment/Daemons
