@@ -13,7 +13,7 @@
 
 RETVAL=0
 PROG="prometheus"
-DAEMON_CONFIG=/etc/${PROG}.conf
+DAEMON_CONFIG=/etc/${PROG}.yaml
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}
 DAEMON=/usr/bin/${PROG}
 PID_FILE=/var/run/prometheus/${PROG}.pid

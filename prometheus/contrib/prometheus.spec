@@ -1,5 +1,5 @@
 Name:		prometheus
-Version:	0.13.3
+Version:	0.14.0
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
@@ -7,12 +7,6 @@ License:	See the LICENSE file at github.
 URL:		https://github.com/prometheus/prometheus
 Source0:	https://github.com/prometheus/prometheus/archive/%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
-BuildRequires:  git
-BuildRequires:  mercurial
-BuildRequires:  gzip
-BuildRequires:  curl
-BuildRequires:  sed
-BuildRequires:  vim-common
 Requires(pre):  /usr/sbin/useradd
 Requires:       daemonize
 AutoReqProv:	No
@@ -42,7 +36,7 @@ mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
 install -m 755 prometheus $RPM_BUILD_ROOT/usr/bin/prometheus
-install -m 644 contrib/prometheus.conf $RPM_BUILD_ROOT/etc/prometheus/prometheus.conf
+install -m 644 contrib/prometheus.yaml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yaml
 install -m 644 contrib/prometheus.rules $RPM_BUILD_ROOT/etc/prometheus/prometheus.rules
 install -m 755 contrib/prometheus.init $RPM_BUILD_ROOT/etc/init.d/prometheus
 install -m 644 contrib/prometheus.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/prometheus
@@ -85,7 +79,7 @@ chmod 744 /var/log/prometheus
 %files
 %defattr(-,root,root,-)
 /usr/bin/prometheus
-%config(noreplace) /etc/prometheus/prometheus.conf
+%config(noreplace) /etc/prometheus/prometheus.yaml
 %config(noreplace) /etc/prometheus/prometheus.rules
 /etc/init.d/prometheus
 %config(noreplace) /etc/sysconfig/prometheus
