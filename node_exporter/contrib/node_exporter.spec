@@ -27,10 +27,8 @@ mkdir -vp $RPM_BUILD_ROOT/var/run/prometheus
 mkdir -vp $RPM_BUILD_ROOT/var/lib/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/bin
 mkdir -vp $RPM_BUILD_ROOT/etc/init.d
-mkdir -vp $RPM_BUILD_ROOT/etc/prometheus
 mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
 install -m 755 node_exporter $RPM_BUILD_ROOT/usr/bin/node_exporter
-install -m 644 contrib/node_exporter.conf $RPM_BUILD_ROOT/etc/prometheus/node_exporter.conf
 install -m 755 contrib/node_exporter.init $RPM_BUILD_ROOT/etc/init.d/node_exporter
 install -m 644 contrib/node_exporter.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/node_exporter
 
@@ -53,7 +51,6 @@ chmod 744 /var/log/prometheus
 %files
 %defattr(-,root,root,-)
 /usr/bin/node_exporter
-%config(noreplace) /etc/prometheus/node_exporter.conf
 /etc/init.d/node_exporter
 %config(noreplace) /etc/sysconfig/node_exporter
 /var/run/prometheus

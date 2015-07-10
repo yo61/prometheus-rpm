@@ -102,3 +102,5 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/consoles/node.html
 /usr/share/prometheus/console_libraries/prom.lib
 /usr/share/prometheus/console_libraries/menu.lib
+/var/run/prometheus
+/var/log/prometheus
