@@ -1,11 +1,11 @@
-Name:		prometheus-node-exporter
-Version:	0.10.0
+Name:		node-exporter
+Version:	0.12.0rc1
 Release:	1%{?dist}
 Summary:	Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
 Group:		System Environment/Daemons
 License:	See the LICENSE file at github.
 URL:		https://github.com/prometheus/node_exporter
-Source0:	https://github.com/prometheus/node_exporter/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/prometheus/node_exporter/releases/download/%{version}/node_exporter-%{version}.linux-amd64.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(pre):  /usr/sbin/useradd
 Requires:       daemonize
@@ -16,10 +16,10 @@ AutoReqProv:	No
 Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
 
 %prep
-%setup -q
+%setup -q -n node_exporter-%{version}.linux-amd64
 
 %build
-make %{?_smp_mflags}
+echo
 
 %install
 mkdir -vp $RPM_BUILD_ROOT/var/log/prometheus/
