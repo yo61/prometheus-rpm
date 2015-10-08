@@ -38,7 +38,7 @@ mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
 
-install -m 644 contrib/prometheus.init $RPM_BUILD_ROOT/etc/init.d/prometheus
+install -m 755 contrib/prometheus.init $RPM_BUILD_ROOT/etc/init.d/prometheus
 install -m 644 contrib/prometheus.rules $RPM_BUILD_ROOT/etc/prometheus/prometheus.rules
 install -m 644 contrib/prometheus.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/prometheus
 install -m 644 contrib/prometheus.yaml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yaml
