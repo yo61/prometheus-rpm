@@ -1,3 +1,5 @@
+%define debug_package %{nil}
+
 Name:		prometheus
 Version:	0.16.0rc2
 Release:	1%{?dist}

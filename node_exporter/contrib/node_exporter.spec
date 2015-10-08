@@ -1,3 +1,5 @@
+%define debug_package %{nil}
+
 Name:		node-exporter
 Version:	0.12.0rc1
 Release:	1%{?dist}
