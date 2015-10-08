@@ -1,4 +1,4 @@
-VERSION=0.14.0
+VERSION=0.16.0rc2
 PWD=$(shell pwd)
 
 all: rpm clean
@@ -6,11 +6,10 @@ all: rpm clean
 rpm:
 	mkdir -p "$(PWD)/rpmbuild"
 	mkdir -p "$(PWD)/rpmbuild/SOURCES/"
-	cd "$(PWD)/rpmbuild/SOURCES" && git clone https://github.com/prometheus/prometheus.git
-	cd "$(PWD)/rpmbuild/SOURCES/prometheus" && git checkout tags/$(VERSION)
-	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/prometheus"
-	cd "$(PWD)/rpmbuild/SOURCES" && mv prometheus prometheus-$(VERSION)
-	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz $(VERSION).tar.gz prometheus-$(VERSION)
+	cd "$(PWD)/rpmbuild/SOURCES" && wget https://github.com/prometheus/prometheus/releases/download/$(VERSION)/prometheus-$(VERSION).linux-amd64.tar.gz
+	cd "$(PWD)/rpmbuild/SOURCES" && tar xzvf *tar.gz
+	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/prometheus-$(VERSION).linux-amd64"
+	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz prometheus-$(VERSION).linux-amd64.tar.gz prometheus-$(VERSION).linux-amd64
 	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/prometheus.spec
 
 deploy:
@@ -18,4 +17,4 @@ deploy:
 
 clean:
 	rm -rf "$(PWD)/rpmbuild/SOURCES/prometheus-$(VERSION)"
-	rm "$(PWD)/rpmbuild/SOURCES/$(VERSION).tar.gz"
+	rm "$(PWD)/rpmbuild/SOURCES/prometheus-$(VERSION).linux-amd64.tar.gz"

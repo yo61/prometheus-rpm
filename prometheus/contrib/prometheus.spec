@@ -1,11 +1,11 @@
 Name:		prometheus
-Version:	0.14.0
+Version:	0.16.0rc2
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
 License:	See the LICENSE file at github.
 URL:		https://github.com/prometheus/prometheus
-Source0:	https://github.com/prometheus/prometheus/archive/%{version}.tar.gz
+Source0:	https://github.com/prometheus/prometheus/releases/download/%{version}/prometheus-%{version}.linux-amd64.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(pre):  /usr/sbin/useradd
 Requires:       daemonize
@@ -19,10 +19,10 @@ rule expressions, displays the results, and can trigger alerts if
 some condition is observed to be true.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.linux-amd64
 
 %build
-make binary %{?_smp_mflags}
+echo
 
 %install
 mkdir -vp $RPM_BUILD_ROOT/var/log/prometheus/
@@ -35,11 +35,17 @@ mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 mkdir -vp $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
-install -m 755 prometheus $RPM_BUILD_ROOT/usr/bin/prometheus
-install -m 644 contrib/prometheus.yaml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yaml
+
+install -m 644 contrib/prometheus.init $RPM_BUILD_ROOT/etc/init.d/prometheus
 install -m 644 contrib/prometheus.rules $RPM_BUILD_ROOT/etc/prometheus/prometheus.rules
-install -m 755 contrib/prometheus.init $RPM_BUILD_ROOT/etc/init.d/prometheus
 install -m 644 contrib/prometheus.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/prometheus
+install -m 644 contrib/prometheus.yaml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yaml
+install -m 755 prometheus $RPM_BUILD_ROOT/usr/bin/prometheus
+install -m 755 promtool $RPM_BUILD_ROOT/usr/bin/promtool
+
+
+install -m 755 console_libraries/menu.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
+install -m 755 console_libraries/prom.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
 install -m 755 consoles/aws_elasticache.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/aws_elb.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/aws_redshift-cluster.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
@@ -57,8 +63,10 @@ install -m 755 consoles/node-cpu.html $RPM_BUILD_ROOT/usr/share/prometheus/conso
 install -m 755 consoles/node-disk.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/node-overview.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/node.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
-install -m 755 console_libraries/prom.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
-install -m 755 console_libraries/menu.lib $RPM_BUILD_ROOT/usr/share/prometheus/console_libraries
+install -m 755 consoles/prometheus-overview.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
+install -m 755 consoles/prometheus.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
+install -m 755 consoles/snmp-overview.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
+install -m 755 consoles/snmp.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 
 %clean
 make clean
@@ -79,6 +87,7 @@ chmod 744 /var/log/prometheus
 %files
 %defattr(-,root,root,-)
 /usr/bin/prometheus
+/usr/bin/promtool
 %config(noreplace) /etc/prometheus/prometheus.yaml
 %config(noreplace) /etc/prometheus/prometheus.rules
 /etc/init.d/prometheus
@@ -100,5 +109,9 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/consoles/node-disk.html
 /usr/share/prometheus/consoles/node-overview.html
 /usr/share/prometheus/consoles/node.html
+/usr/share/prometheus/consoles/prometheus-overview.html
+/usr/share/prometheus/consoles/prometheus.html
+/usr/share/prometheus/consoles/snmp-overview.html
+/usr/share/prometheus/consoles/snmp.html
 /usr/share/prometheus/console_libraries/prom.lib
 /usr/share/prometheus/console_libraries/menu.lib
