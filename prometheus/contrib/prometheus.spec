@@ -71,7 +71,6 @@ install -m 755 consoles/snmp-overview.html $RPM_BUILD_ROOT/usr/share/prometheus/
 install -m 755 consoles/snmp.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 
 %clean
-make clean
 
 %pre
 getent group prometheus >/dev/null || groupadd -r prometheus

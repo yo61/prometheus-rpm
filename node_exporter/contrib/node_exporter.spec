@@ -37,7 +37,6 @@ install -m 755 contrib/node_exporter.init $RPM_BUILD_ROOT/etc/init.d/node_export
 install -m 644 contrib/node_exporter.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/node_exporter
 
 %clean
-make clean
 
 %pre
 getent group prometheus >/dev/null || groupadd -r prometheus
