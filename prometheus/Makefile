@@ -1,4 +1,4 @@
-VERSION=0.16.0rc2
+VERSION=0.16.0
 PWD=$(shell pwd)
 
 all: rpm clean

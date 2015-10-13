@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		prometheus
-Version:	0.16.0rc2
+Version:	0.16.0
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
@@ -54,7 +54,6 @@ install -m 755 consoles/aws_redshift-cluster.html $RPM_BUILD_ROOT/usr/share/prom
 install -m 755 consoles/aws_redshift.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/cassandra.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/cloudwatch.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
-install -m 755 consoles/federation_template_example.txt $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/haproxy-backend.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/haproxy-backends.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/haproxy-frontend.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
@@ -99,7 +98,6 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/consoles/aws_redshift.html
 /usr/share/prometheus/consoles/cassandra.html
 /usr/share/prometheus/consoles/cloudwatch.html
-/usr/share/prometheus/consoles/federation_template_example.txt
 /usr/share/prometheus/consoles/haproxy-backend.html
 /usr/share/prometheus/consoles/haproxy-backends.html
 /usr/share/prometheus/consoles/haproxy-frontend.html
