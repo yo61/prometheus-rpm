@@ -114,3 +114,5 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/consoles/snmp.html
 /usr/share/prometheus/console_libraries/prom.lib
 /usr/share/prometheus/console_libraries/menu.lib
+/var/run/prometheus
+/var/log/prometheus
