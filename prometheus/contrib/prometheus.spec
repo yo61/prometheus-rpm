@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		prometheus
-Version:	0.16.0
+Version:	0.16.1
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
@@ -115,3 +115,5 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/console_libraries/prom.lib
 /usr/share/prometheus/console_libraries/menu.lib
 %attr(755, prometheus, prometheus)/var/lib/prometheus
+/var/run/prometheus
+/var/log/prometheus

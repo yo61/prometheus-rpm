@@ -13,7 +13,6 @@
 
 RETVAL=0
 PROG="node_exporter"
-DAEMON_CONFIG=/etc/prometheus/${PROG}.conf
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}
 DAEMON=/usr/bin/${PROG}
 PID_FILE=/var/run/prometheus/${PROG}.pid
