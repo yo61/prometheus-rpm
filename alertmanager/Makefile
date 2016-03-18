@@ -15,7 +15,7 @@ rpm:
 	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/alertmanager.spec
 
 deploy:
-	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=alertmanager -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/alertmanager-rpm/alertmanager/rpmbuild/RPMS/x86_64/alertmanager-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
+	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=alertmanager -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/alertmanager/rpmbuild/RPMS/x86_64/alertmanager-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
 
 clean:
 	rm -rf "$(PWD)/rpmbuild/SOURCES/alertmanager-$(VERSION)"
