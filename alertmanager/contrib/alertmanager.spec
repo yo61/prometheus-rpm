@@ -10,7 +10,7 @@ URL:		https://github.com/prometheus/alertmanager
 Source0:	https://github.com/prometheus/alertmanager/releases/download/%{version}/alertmanager-%{version}.linux-amd64.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(pre):  /usr/sbin/useradd
-Requires:       daemonize, glibc-static
+Requires:       daemonize
 AutoReqProv:	No
 
 %description
