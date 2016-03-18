@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		prometheus
-Version:	0.16.1
+Version:	0.17.0
 Release:	1%{?dist}
 Summary:	Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 Group:		System Environment/Daemons
@@ -52,6 +52,7 @@ install -m 755 consoles/aws_elasticache.html $RPM_BUILD_ROOT/usr/share/prometheu
 install -m 755 consoles/aws_elb.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/aws_redshift-cluster.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/aws_redshift.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
+install -m 755 consoles/blackbox.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/cassandra.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/cloudwatch.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
 install -m 755 consoles/haproxy-backend.html $RPM_BUILD_ROOT/usr/share/prometheus/consoles
@@ -96,6 +97,7 @@ chmod 744 /var/log/prometheus
 /usr/share/prometheus/consoles/aws_elb.html
 /usr/share/prometheus/consoles/aws_redshift-cluster.html
 /usr/share/prometheus/consoles/aws_redshift.html
+/usr/share/prometheus/consoles/blackbox.html
 /usr/share/prometheus/consoles/cassandra.html
 /usr/share/prometheus/consoles/cloudwatch.html
 /usr/share/prometheus/consoles/haproxy-backend.html

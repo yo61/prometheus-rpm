@@ -1,4 +1,4 @@
-VERSION=0.16.1
+VERSION=0.17.0
 PWD=$(shell pwd)
 
 all: rpm clean
