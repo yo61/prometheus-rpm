@@ -4,7 +4,7 @@
 #
 # chkconfig: 2345 80 80
 #
-# config: /etc/prometheus/alertmanager.conf
+# config: /etc/prometheus/alertmanager/alertmanager.yaml
 # pidfile: /var/run/prometheus/alertmanager.pid
 
 # Source function library.
@@ -13,7 +13,6 @@
 
 RETVAL=0
 PROG="alertmanager"
-DAEMON_CONFIG=/etc/${PROG}.yaml
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}
 DAEMON=/usr/bin/${PROG}
 PID_FILE=/var/run/prometheus/${PROG}.pid
