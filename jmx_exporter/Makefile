@@ -11,7 +11,7 @@ rpm:
 	cd "$(PWD)/rpmbuild/SOURCES/" && wget https://github.com/prometheus/jmx_exporter/archive/parent-$(VERSION).zip
 	cd "$(PWD)/rpmbuild/SOURCES/" && unzip parent-$(VERSION).zip
 	cd "$(PWD)/rpmbuild/SOURCES/jmx_exporter-parent-$(VERSION)/" && mvn clean package
-	cd "$(PWD)/rpmbuild/SOURCES/jmx_exporter-parent-$(VERSION)/" && cp jmx_prometheus_httpserver/target/jmx_prometheus_httpserver-$(VERSION)-jar-with-dependencies.jar ../jmx_exporter-$(VERSION)
+	cd "$(PWD)/rpmbuild/SOURCES/jmx_exporter-parent-$(VERSION)/" && cp jmx_prometheus_httpserver/target/jmx_prometheus_httpserver-$(VERSION)-jar-with-dependencies.jar ../jmx_exporter-$(VERSION)/jmx_exporter.jar
 	cd "$(PWD)/rpmbuild/SOURCES/jmx_exporter-parent-$(VERSION)/" && cp example_configs/* ../jmx_exporter-$(VERSION)/configuration
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/jmx_exporter-$(VERSION)"
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz parent-$(VERSION).tar.gz jmx_exporter-$(VERSION)

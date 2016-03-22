@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 ARGS=$@
-java /usr/share/prometheus/jmx_exporter/jmx_prometheus_httpserver-0.6-SNAPSHOT-jar-with-dependencies.jar $ARGS
+java /usr/share/prometheus/jmx_exporter/jmx_exporter.jar $ARGS
 
 
