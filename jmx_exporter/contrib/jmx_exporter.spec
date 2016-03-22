@@ -32,12 +32,19 @@ mkdir -vp $RPM_BUILD_ROOT/var/lib/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/bin
 mkdir -vp $RPM_BUILD_ROOT/etc/init.d
 mkdir -vp $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter
+mkdir -vp $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/examples
 mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
 
 install -m 755 contrib/jmx_exporter.init $RPM_BUILD_ROOT/etc/init.d/jmx_exporter
 install -m 644 contrib/jmx_exporter.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/jmx_exporter
 install -m 644 contrib/jmx_exporter.yaml $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/jmx_exporter.yaml
 install -m 755 contrib/jmx_exporter $RPM_BUILD_ROOT/usr/bin/jmx_exporter
+
+install -m 644 configuration/cassandra.yml $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/examples/cassandra.yml
+install -m 644 configuration/kafka-pre0-8-2.yml $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/examples/kafka-pre0-8-2.yml
+install -m 644 configuration/kafka-0-8-2.yml $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/examples/kafka-0-8-2.yml
+install -m 644 configuration/tomcat.yml $RPM_BUILD_ROOT/etc/prometheus/jmx_exporter/examples/tomcat.yml
+
 
 %clean
 
@@ -60,3 +67,7 @@ chmod 744 /var/log/prometheus
 %config(noreplace) /etc/prometheus/jmx_exporter/jmx_exporter.yaml
 /etc/init.d/jmx_exporter
 %config(noreplace) /etc/sysconfig/jmx_exporter
+/etc/prometheus/jmx_exporter/examples/cassandra.yml
+/etc/prometheus/jmx_exporter/examples/kafka-pre0-8-2.yml
+/etc/prometheus/jmx_exporter/examples/kafka-0-8-2.yml
+/etc/prometheus/jmx_exporter/examples/tomcat.yml
