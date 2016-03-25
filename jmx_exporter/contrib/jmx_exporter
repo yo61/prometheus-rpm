@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 ARGS=$@
-java /usr/share/prometheus/jmx_exporter/jmx_exporter.jar $ARGS
+java -jar /usr/share/prometheus/jmx_exporter/jmx_exporter.jar $ARGS
 
 
