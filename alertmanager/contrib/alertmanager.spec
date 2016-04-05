@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		alertmanager
-Version:	0.1.0
+Version:	0.1.1
 Release:	1%{?dist}
 Summary:	The Alertmanager handles alerts sent by client applications such as the Prometheus server.
 Group:		System Environment/Daemons
