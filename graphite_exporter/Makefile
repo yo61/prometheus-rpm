@@ -1,4 +1,4 @@
-VERSION=0.12.0
+VERSION=0.1.0
 PWD=$(shell pwd)
 
 all: rpm clean
@@ -13,7 +13,8 @@ rpm:
 	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/graphite_exporter.spec
 
 deploy:
-	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=prometheus-node-exporter -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/graphite_exporter/rpmbuild/RPMS/x86_64/graphite-exporter-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
+	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=prometheus-graphite-exporter -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/graphite_exporter/rpmbuild/RPMS/x86_64/graphite-exporter-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
 clean:
-	rm -rf "$(PWD)/rpmbuild/SOURCES/prometheus-node-exporter-$(VERSION)"
-	rm -rf "$(PWD)/rpmbuild/SOURCES/prometheus-node-exporter-$(VERSION).linux-amd64.tar.gz"
+	rm -rf "$(PWD)/rpmbuild/SOURCES/graphite_exporter-$(VERSION)"
+	rm -rf "$(PWD)/rpmbuild/SOURCES/graphite_exporter-$(VERSION).linux-amd64"
+	rm -rf "$(PWD)/rpmbuild/SOURCES/graphite_exporter-$(VERSION).linux-amd64.tar.gz"

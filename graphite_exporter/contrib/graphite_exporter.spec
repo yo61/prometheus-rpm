@@ -30,7 +30,7 @@ mkdir -vp $RPM_BUILD_ROOT/var/lib/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/bin
 mkdir -vp $RPM_BUILD_ROOT/etc/init.d
 mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
-install -m 755 graphite_exporter-%{version}.linux-amd64/graphite_exporter $RPM_BUILD_ROOT/usr/bin/graphite_exporter
+install -m 755 graphite_exporter $RPM_BUILD_ROOT/usr/bin/graphite_exporter
 install -m 755 contrib/graphite_exporter.init $RPM_BUILD_ROOT/etc/init.d/graphite_exporter
 install -m 644 contrib/graphite_exporter.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/graphite_exporter
 
