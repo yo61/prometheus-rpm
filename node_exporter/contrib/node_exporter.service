@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus Node Exporter Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/node_exporter -collectors.enabled=diskstats,filesystem,loadavg,meminfo,stat,textfile,time,netdev,netstat
+User=prometheus
+
+[Install]
+WantedBy=multi-user.target

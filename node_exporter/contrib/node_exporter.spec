@@ -10,7 +10,6 @@ URL:		https://github.com/prometheus/node_exporter
 Source0:        https://github.com/prometheus/node_exporter/releases/download/%{version}/node_exporter-%{version}.linux-amd64.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(pre):  /usr/sbin/useradd
-Requires:       daemonize
 AutoReqProv:	No
 
 %description
@@ -28,10 +27,10 @@ mkdir -vp $RPM_BUILD_ROOT/var/log/prometheus/
 mkdir -vp $RPM_BUILD_ROOT/var/run/prometheus
 mkdir -vp $RPM_BUILD_ROOT/var/lib/prometheus
 mkdir -vp $RPM_BUILD_ROOT/usr/bin
-mkdir -vp $RPM_BUILD_ROOT/etc/init.d
+mkdir -vp $RPM_BUILD_ROOT/usr/lib/systemd/system
 mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
 install -m 755 node_exporter-%{version}.linux-amd64/node_exporter $RPM_BUILD_ROOT/usr/bin/node_exporter
-install -m 755 contrib/node_exporter.init $RPM_BUILD_ROOT/etc/init.d/node_exporter
+install -m 755 contrib/node_exporter.service $RPM_BUILD_ROOT/usr/lib/systemd/system/node_exporter.service
 install -m 644 contrib/node_exporter.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/node_exporter
 
 %clean
@@ -52,7 +51,7 @@ chmod 744 /var/log/prometheus
 %files
 %defattr(-,root,root,-)
 /usr/bin/node_exporter
-/etc/init.d/node_exporter
+/usr/lib/systemd/system/node_exporter.service
 %config(noreplace) /etc/sysconfig/node_exporter
 /var/run/prometheus
 /var/log/prometheus
