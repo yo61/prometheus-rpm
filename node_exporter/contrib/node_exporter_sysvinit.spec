@@ -1,6 +1,6 @@
 %define debug_package %{nil}
 
-Name:		node-exporter
+Name:		node-exporter-sysvinit
 Version:	0.12.0
 Release:	1%{?dist}
 Summary:	Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.

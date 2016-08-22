@@ -10,7 +10,7 @@ rpm:
 	cd "$(PWD)/rpmbuild/SOURCES" && mkdir "node_exporter-$(VERSION).linux-amd64" && tar xzvf *tar.gz -C "node_exporter-$(VERSION).linux-amd64"
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/node_exporter-$(VERSION).linux-amd64"
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz node_exporter-$(VERSION).linux-amd64.tar.gz node_exporter-$(VERSION).linux-amd64
-	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/node_exporter.spec
+	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/node_exporter_sysvinit.spec
 	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/node_exporter_systemd.spec
 
 deploy:

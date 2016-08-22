@@ -1,8 +1,8 @@
 %define debug_package %{nil}
 
-Name:		node-exporter
+Name:		node-exporter-systemd
 Version:	0.12.0
-Release:	1%{?dist}.systemd
+Release:	1%{?dist}
 Summary:	Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
 Group:		System Environment/Daemons
 License:	See the LICENSE file at github.
