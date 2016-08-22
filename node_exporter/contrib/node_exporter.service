@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus Node Exporter Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node_exporter -web.listen-address=:9092 -collectors.enabled=conntrack,diskstats,entropy,filefd,filesystem,loadavg,mdadm,meminfo,netdev,netstat,sockstat,stat,textfile,time,uname,vmstat --collector.textfile.directory=/opt/prometheus
+User=prometheus
+
+[Install]
+WantedBy=multi-user.target
