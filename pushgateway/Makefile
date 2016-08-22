@@ -1,4 +1,4 @@
-VERSION=0.2.0
+VERSION=0.3.0
 PWD=$(shell pwd)
 
 all: rpm clean
@@ -17,5 +17,5 @@ deploy:
 	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=pushgateway -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/pushgateway/rpmbuild/RPMS/x86_64/pushgateway-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
 
 clean:
-	rm -rf "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION)"
-	rm "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64.tar.gz"
+	rm -rf "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64"
+	rm -f "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64.tar.gz"

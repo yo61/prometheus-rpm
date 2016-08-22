@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		pushgateway
-Version:	0.2.0
+Version:	0.3.0
 Release:	1%{?dist}
 Summary:	The pushgateway handles alerts sent by client applications such as the Prometheus server.
 Group:		System Environment/Daemons
@@ -36,7 +36,7 @@ mkdir -vp $RPM_BUILD_ROOT/etc/sysconfig
 
 install -m 755 contrib/pushgateway.init $RPM_BUILD_ROOT/etc/init.d/pushgateway
 install -m 644 contrib/pushgateway.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/pushgateway
-install -m 755 pushgateway $RPM_BUILD_ROOT/usr/bin/pushgateway
+install -m 755 pushgateway-%{version}.linux-amd64/pushgateway $RPM_BUILD_ROOT/usr/bin/pushgateway
 
 %clean
 
