@@ -45,7 +45,15 @@ stop() {
     echo
     [ $RETVAL = 0 ] && rm -f ${LOCK_FILE} ${PID_FILE}
     return $RETVAL
-}  
+}
+
+reload() {
+    echo -n $"Reloading prometheus: "
+    killproc -p ${PID_FILE} ${DAEMON} -1
+    RETVAL=$?
+    echo
+    return $RETVAL
+}
 
 check_status() {
     status -p ${PID_FILE} ${DAEMON}
@@ -61,9 +69,9 @@ case "$1" in
         stop
         ;;
     status)
-	check_status
+        check_status
         ;;
-    reload|force-reload)
+    reload)
         reload
         ;;
     restart)
@@ -72,7 +80,7 @@ case "$1" in
         ;;
     *)
         N=/etc/init.d/${NAME}
-        echo "Usage: $N {start|stop|status|restart|force-reload}" >&2
+        echo "Usage: $N {start|stop|status|restart|reload}" >&2
         RETVAL=2
         ;;
 esac
