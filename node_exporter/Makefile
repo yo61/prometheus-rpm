@@ -9,10 +9,10 @@ all: el6 el7
 prepare: clean
 	mkdir -p $(OUTPUT_DIR)
 	mkdir -p $(PWD)/rpmbuild/SOURCES/
-	cd $(PWD)/rpmbuild/SOURCES && wget https://github.com/prometheus/node_exporter/releases/download/$(VERSION)/node_exporter-$(VERSION).linux-amd64.tar.gz
-	cd $(PWD)/rpmbuild/SOURCES && mkdir node_exporter-$(VERSION).linux-amd64 && tar xzvf *tar.gz -C node_exporter-$(VERSION).linux-amd64
-	cp -Rv contrib $(PWD)/rpmbuild/SOURCES/node_exporter-$(VERSION).linux-amd64
-	cd $(PWD)/rpmbuild/SOURCES && tar cvfz node_exporter-$(VERSION).linux-amd64.tar.gz node_exporter-$(VERSION).linux-amd64
+	cd "$(PWD)/rpmbuild/SOURCES" && wget https://github.com/prometheus/node_exporter/releases/download/$(VERSION)/node_exporter-$(VERSION).linux-amd64.tar.gz
+	cd "$(PWD)/rpmbuild/SOURCES" && mkdir node_exporter-$(VERSION).linux-amd64 && tar xzvf *tar.gz -C node_exporter-$(VERSION).linux-amd64
+	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/node_exporter-$(VERSION).linux-amd64"
+	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz node_exporter-$(VERSION).linux-amd64.tar.gz node_exporter-$(VERSION).linux-amd64
 
 el6: prepare
 	$(MOCK) --root epel-6-x86_64 --define "%dist .el6" --buildsrpm --spec contrib/node_exporter.spec --sources $(PWD)/rpmbuild/SOURCES --resultdir $(OUTPUT_DIR)
