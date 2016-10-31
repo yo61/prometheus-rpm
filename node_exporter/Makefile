@@ -16,11 +16,11 @@ prepare: clean
 
 el6: prepare
 	$(MOCK) --root epel-6-x86_64 --define "%dist .el6" --buildsrpm --spec contrib/node_exporter.spec --sources "$(PWD)/rpmbuild/SOURCES" --resultdir "$(OUTPUT_DIR)"
-	$(MOCK) --root epel-6-x86_64 --define "%dist .el6" "$(OUTPUT_DIR)/node_exporter-$(VERSION)-1.el6.src.rpm" --resultdir "$(OUTPUT_DIR)"
+	$(MOCK) --root epel-6-x86_64 --define "%dist .el6" $(OUTPUT_DIR)/node_exporter-$(VERSION)-1.el6.src.rpm --resultdir "$(OUTPUT_DIR)"
 
 el7: prepare
 	$(MOCK) --root epel-7-x86_64 --define "%dist .el7" --buildsrpm --spec contrib/node_exporter.spec --sources "$(PWD)/rpmbuild/SOURCES" --resultdir "$(OUTPUT_DIR)"
-	$(MOCK) --root epel-7-x86_64 --define "%dist .el7" "$(OUTPUT_DIR)/node_exporter-$(VERSION)-1.el7.src.rpm" --resultdir "$(OUTPUT_DIR)"
+	$(MOCK) --root epel-7-x86_64 --define "%dist .el7" $(OUTPUT_DIR)/node_exporter-$(VERSION)-1.el7.src.rpm --resultdir "$(OUTPUT_DIR)"
 
 deploy:
 	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=prometheus-node-exporter.sysvinit -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/node_exporter/rpmbuild/RPMS/x86_64/node-exporter-sysvinit-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)
